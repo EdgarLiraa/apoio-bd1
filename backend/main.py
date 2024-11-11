@@ -1,9 +1,8 @@
-"Camada que gerencia o Database"
-
 from flask import Flask, jsonify
 from flask_cors import CORS
 from rotas.livros import livros_blueprint
 from rotas.impressao import impressao_blueprint
+from rotas.grafica import grafica_blueprint
 
 app = Flask(__name__)
 
@@ -17,5 +16,6 @@ def get_autor():
 
 app.register_blueprint(livros_blueprint)
 app.register_blueprint(impressao_blueprint)
+app.register_blueprint(grafica_blueprint)
 
 app.run("0.0.0.0", port=8000, debug=False)
