@@ -18,6 +18,11 @@ def post_impressao():
     isbn = json.get("isbn")
     grafica_id = json.get("grafica")
     nto_copias = json.get("copias")
-    ImpressaoDatabase().regristra_impressao(isbn, grafica_id, nto_copias, data)
+    registro = ImpressaoDatabase().regristra_impressao(
+        isbn, grafica_id, nto_copias, data
+    )
+
+    if not registro:
+        return jsonify("Não foi possível solicitar a impressão"), 400
 
     return jsonify("Impressao requisitada"), 200

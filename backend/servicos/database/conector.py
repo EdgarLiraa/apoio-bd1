@@ -16,10 +16,15 @@ class DatabaseManager:
         )
         self.cursor = self.conn.cursor(cursor_factory=DictCursor)
 
-    def execute_statement(self, statement: str) -> None:
+    def execute_statement(self, statement: str) -> bool:
         "Usado para Inserções, Deleções, Alter Tables"
-        self.cursor.execute(statement)
-        self.conn.commit()
+        try:
+            self.cursor.execute(statement)
+            self.conn.commit()
+        except:
+            self.conn.reset()
+            return False
+        return True
 
     def execute_select_all(self, query: str) -> list[dict[str, Any]]:
         "Usado para SELECTS no geral"
