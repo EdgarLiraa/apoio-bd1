@@ -26,6 +26,6 @@ class LivrosDatabase:
             if "WHERE" in query:
                 query += f"AND l.isbn = '{livro}'\n"
             else:
-                query += f"WHERE e.isbn = '{livro}'\n"
+                query += f"WHERE es.isbn = '{livro}'\n"
 
         return self.db.execute_select_all(query)
