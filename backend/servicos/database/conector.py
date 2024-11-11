@@ -10,8 +10,8 @@ class DatabaseManager:
         self.conn = psycopg2.connect(
             dbname="grafica",
             user="postgres",
-            password="senha2002",
-            host="172.17.0.2",
+            password="postgres",
+            host="127.0.0.1",
             port=5432,
         )
         self.cursor = self.conn.cursor(cursor_factory=DictCursor)
